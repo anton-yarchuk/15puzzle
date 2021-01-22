@@ -1,0 +1,22 @@
+{
+  "name": "15puzzle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha --recursive \"./src/**/*.test.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.1",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "keypress": "^0.2.1",
+    "lodash": "^4.17.20"
+  }
+}
