@@ -1,4 +1,5 @@
 const Actions = require('./constants/actions');
+const { fieldSize } = require('./constants/field');
 
 /**
  * Checks if the puzzle was solved
@@ -7,9 +8,12 @@ const Actions = require('./constants/actions');
  * @returns {boolean}
  */
 function isPuzzleSolved(field) {
-  for (let row = 0; row < 4; row++) {
-    for (let cell = 0; cell < 4; cell++) {
-      if (field[row][cell] !== (row * 4 + cell + 1).toString() && (row !== 3 || cell !== 3)) {
+  for (let row = 0; row < fieldSize; row++) {
+    for (let cell = 0; cell < fieldSize; cell++) {
+      if (
+        field[row][cell] !== (row * fieldSize + cell + 1).toString() &&
+        (row !== fieldSize - 1 || cell !== fieldSize - 1)
+      ) {
         return false;
       }
     }
@@ -29,11 +33,11 @@ function applyMoveToField(field, action) {
   let targetNeighborCellCoordinates;
   if (action === Actions.Up && emptyRow > 0) {
     targetNeighborCellCoordinates = [emptyRow - 1, emptyCell];
-  } else if (action === Actions.Down && emptyRow < 3) {
+  } else if (action === Actions.Down && emptyRow < fieldSize - 1) {
     targetNeighborCellCoordinates = [emptyRow + 1, emptyCell];
   } else if (action === Actions.Left && emptyCell > 0) {
     targetNeighborCellCoordinates = [emptyRow, emptyCell - 1];
-  } else if (action === Actions.Right && emptyCell < 3) {
+  } else if (action === Actions.Right && emptyCell < fieldSize - 1) {
     targetNeighborCellCoordinates = [emptyRow, emptyCell + 1];
   }
 
@@ -50,7 +54,7 @@ function applyMoveToField(field, action) {
  * @returns {Array<Array<string|null>>}
  */
 function generateNewField() {
-  const values = Array.from(Array(15), (_, i) => (i + 1).toString());
+  const values = Array.from(Array(fieldSize ** 2 - 1), (_, i) => (i + 1).toString());
   values.push(null);
 
   const popRandomValue = () => {
@@ -60,7 +64,7 @@ function generateNewField() {
     return value;
   };
 
-  return Array.from(Array(4), () => Array.from(Array(4), popRandomValue));
+  return Array.from(Array(fieldSize), () => Array.from(Array(fieldSize), popRandomValue));
 }
 
 /**
