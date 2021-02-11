@@ -2,6 +2,8 @@ const keypress = require('keypress');
 
 const Actions = require('../constants/actions');
 
+// TODO: Inject 'console.log' as a dependency for cleaner tests code
+
 /**
  * Mapping between keys name and MoveDirections
  *

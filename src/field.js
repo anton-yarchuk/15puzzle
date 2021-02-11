@@ -54,6 +54,7 @@ function applyMoveToField(field, action) {
  * @returns {Array<Array<string|null>>}
  */
 function generateNewField() {
+  // TODO: Improve field generating. Right now it, potentially, can generate unsolvable field
   const values = Array.from(Array(fieldSize ** 2 - 1), (_, i) => (i + 1).toString());
   values.push(null);
 
