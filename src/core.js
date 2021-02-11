@@ -1,5 +1,6 @@
 const { applyMoveToField, generateNewField, isPuzzleSolved } = require('./field');
 const Actions = require('./constants/actions');
+const Moves = require('./constants/moves');
 
 /**
  * Launches the game.
@@ -16,10 +17,10 @@ module.exports.launchGame = async ({ input, output }) => {
     output.askForInput();
     const action = await input.readInput();
 
-    if (action === Actions.Exit) {
-      process.exit();
-    } else {
+    if (Object.values(Moves).includes(action)) {
       applyMoveToField(field, action);
+    } else if (action === Actions.Exit) {
+      process.exit();
     }
   }
 

@@ -1,4 +1,4 @@
-const Actions = require('./constants/actions');
+const Moves = require('./constants/moves');
 const { fieldSize } = require('./constants/field');
 
 /**
@@ -25,19 +25,19 @@ function isPuzzleSolved(field) {
  * Mutates field according to the user's move.
  *
  * @param field {Array<Array<string|null>>}
- * @param action {Actions}
+ * @param action {Moves}
  */
 function applyMoveToField(field, action) {
   const [emptyRow, emptyCell] = getEmptyCellCoordinates(field);
 
   let targetNeighborCellCoordinates;
-  if (action === Actions.Up && emptyRow > 0) {
+  if (action === Moves.Up && emptyRow > 0) {
     targetNeighborCellCoordinates = [emptyRow - 1, emptyCell];
-  } else if (action === Actions.Down && emptyRow < fieldSize - 1) {
+  } else if (action === Moves.Down && emptyRow < fieldSize - 1) {
     targetNeighborCellCoordinates = [emptyRow + 1, emptyCell];
-  } else if (action === Actions.Left && emptyCell > 0) {
+  } else if (action === Moves.Left && emptyCell > 0) {
     targetNeighborCellCoordinates = [emptyRow, emptyCell - 1];
-  } else if (action === Actions.Right && emptyCell < fieldSize - 1) {
+  } else if (action === Moves.Right && emptyCell < fieldSize - 1) {
     targetNeighborCellCoordinates = [emptyRow, emptyCell + 1];
   }
 

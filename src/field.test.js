@@ -1,6 +1,6 @@
 const _ = require('lodash');
 const { generateNewField, applyMoveToField, isPuzzleSolved } = require('./field');
-const Actions = require('./constants/actions');
+const Moves = require('./constants/moves');
 
 require('chai').should();
 
@@ -87,7 +87,7 @@ describe('Puzzle Field', function () {
       });
 
       it('Move up should change field accordingly', function () {
-        applyMoveToField(field, Actions.Up);
+        applyMoveToField(field, Moves.Up);
         field.should.deep.equal([
           ['4', '3', '2', '1'],
           ['6', '5', null, '8'],
@@ -97,7 +97,7 @@ describe('Puzzle Field', function () {
       });
 
       it('Move down should change field accordingly', function () {
-        applyMoveToField(field, Actions.Down);
+        applyMoveToField(field, Moves.Down);
         field.should.deep.equal([
           ['4', '3', '2', '1'],
           ['6', '5', '7', '8'],
@@ -107,7 +107,7 @@ describe('Puzzle Field', function () {
       });
 
       it('Move right should change field accordingly', function () {
-        applyMoveToField(field, Actions.Right);
+        applyMoveToField(field, Moves.Right);
         field.should.deep.equal([
           ['4', '3', '2', '1'],
           ['6', '5', '7', '8'],
@@ -117,7 +117,7 @@ describe('Puzzle Field', function () {
       });
 
       it('Move left should change field accordingly', function () {
-        applyMoveToField(field, Actions.Left);
+        applyMoveToField(field, Moves.Left);
         field.should.deep.equal([
           ['4', '3', '2', '1'],
           ['6', '5', '7', '8'],
@@ -137,7 +137,7 @@ describe('Puzzle Field', function () {
         ];
         const newField = _.cloneDeep(field);
 
-        applyMoveToField(newField, Actions.Up);
+        applyMoveToField(newField, Moves.Up);
 
         field.should.deep.equal(newField);
       });
@@ -151,7 +151,7 @@ describe('Puzzle Field', function () {
         ];
         const newField = _.cloneDeep(field);
 
-        applyMoveToField(newField, Actions.Down);
+        applyMoveToField(newField, Moves.Down);
 
         field.should.deep.equal(newField);
       });
@@ -165,7 +165,7 @@ describe('Puzzle Field', function () {
         ];
         const newField = _.cloneDeep(field);
 
-        applyMoveToField(newField, Actions.Right);
+        applyMoveToField(newField, Moves.Right);
 
         field.should.deep.equal(newField);
       });
@@ -179,7 +179,7 @@ describe('Puzzle Field', function () {
         ];
         const newField = _.cloneDeep(field);
 
-        applyMoveToField(newField, Actions.Left);
+        applyMoveToField(newField, Moves.Left);
 
         field.should.deep.equal(newField);
       });

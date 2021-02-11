@@ -1,12 +1,11 @@
+const Moves = require('./moves');
+
 /**
- * Enum of all possible actions in the game.
+ * Enum of all possible actions in the game (including moves).
  *
  * @type {Readonly<{Down: string, Left: string, Right: string, Up: string, Exit: string}>}
  */
 module.exports = Object.freeze({
-  Up: 'up',
-  Down: 'down',
-  Right: 'right',
-  Left: 'left',
+  ...Moves,
   Exit: 'exit',
 });
